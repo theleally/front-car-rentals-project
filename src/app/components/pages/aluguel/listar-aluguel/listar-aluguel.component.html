@@ -1,3 +1,4 @@
+<h1>Listar Aluguéis</h1>
 <table>
     <tr>
         <th>#</th>        
@@ -16,7 +17,6 @@
     </tr>
     <tr *ngFor="let pedidos of pedido">
         <td>{{pedidos.rentalId}}</td>
-        <td>{{pedidos.client}}</td>
         <td>{{pedidos.clientId}}</td>
         <td>{{pedidos.automobileId}}</td>
         <td>{{pedidos.total_price}}</td>
