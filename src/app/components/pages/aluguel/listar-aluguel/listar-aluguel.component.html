@@ -3,6 +3,7 @@
         <th>#</th>        
         <th>Cliente</th>
         <th>Automóvel</th>
+        <th>Cliente</th>
         <th>Preço Total</th>
         <th>Total de dias</th>
         <th>Preço por dia</th>
@@ -15,6 +16,7 @@
     </tr>
     <tr *ngFor="let pedidos of pedido">
         <td>{{pedidos.rentalId}}</td>
+        <td>{{pedidos.client}}</td>
         <td>{{pedidos.clientId}}</td>
         <td>{{pedidos.automobileId}}</td>
         <td>{{pedidos.total_price}}</td>
