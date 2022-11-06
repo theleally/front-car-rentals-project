@@ -1,1 +1,40 @@
-<p>cadastrar-aluguel works!</p>
+<h2>Cadastrar Pedido</h2>
+
+<div id="tipo">
+  <label for="cliente">Cliente</label>
+  <input type="text" id="txtNome" [(ngModel)]="clientId" />
+</div>
+<div id="automovel">
+  <label for="automovel">Automóvel</label>
+  <input type="text" id="txtCpf" [(ngModel)]="automobileId" />
+</div>
+<div id="cliente">
+    <label for="automovel">Automóvel</label>
+    <input type="text" id="txtCpf" [(ngModel)]="client" />
+  </div>
+<div id="total">
+  <label for="Dias">Total</label>
+  <input type="text" id="txtCpf" [(ngModel)]="total_price" />
+</div>
+<div id="qtdDias">
+  <label for="txtCpf">Total de dias</label>
+  <input type="text" id="txtCpf" [(ngModel)]="total_days" />
+</div>
+<div id="precoPordia">
+    <label for="txtCpf">Preço diária</label>
+    <input type="text" id="txtCpf" [(ngModel)]="price_per_day" />
+  </div>
+  <div id="dataInicio">
+    <label for="txtCpf">Data início</label>
+    <input type="text" id="txtCpf" [(ngModel)]="start_date" />
+  </div>
+  <div id="dataFim">
+    <label for="txtCpf">Data final</label>
+    <input type="text" id="txtCpf" [(ngModel)]="end_date" />
+  </div>
+<div id="botao">
+  <button id="btnCadastrar" (click)="cadastrar()">Cadastrar</button>
+</div>
+<div>
+
+</div>

@@ -1,1 +1,38 @@
-<p>listar-automovel works!</p>
+<h1>Listar Clientes</h1>
+
+<table>
+    <tr>
+        <th>#</th>        
+        <th>Tipo</th>
+        <th>Modelo</th>
+        <th>Marca</th>
+        <th>Preço diário</th>
+        <th>Ano</th>
+        <th>Placa</th>
+        <th>Criado em</th>
+        <th>Remover</th>
+        <th>Alterar</th>
+        
+    </tr>
+    <tr *ngFor="let automoveis of automovel">
+        <td>{{automoveis.automobileId}}</td>
+        <td>{{automoveis.type}}</td>
+        <td>{{automoveis.models}}</td>
+        <td>{{automoveis.brand}}</td>
+        <td>{{automoveis.price_per_day}}</td>
+        <td>{{automoveis.year}}</td>
+        <td>{{automoveis.placa}}</td>
+        <td>{{automoveis.criadoEm}}</td> 
+        <td>
+            
+            <button (click)="remover(automoveis.automobileId!)">
+                Remover
+            </button>
+        </td>
+        <td>
+            <a routerLink="/pages/automobile/cadastrar/{{ automoveis.automobileId }}">
+                Alterar
+            </a>
+        </td>
+    </tr>
+</table>
