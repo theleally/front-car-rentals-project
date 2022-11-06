@@ -2,6 +2,11 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { CadastrarClienteComponent } from "./components/pages/cliente/cadastrar-cliente/cadastrar-cliente.component";
 import { ListarClientesComponent } from "./components/pages/cliente/listar-clientes/listar-clientes.component";
+import { CadastrarAutomovelComponent } from "./components/pages/automovel/cadastrar-automovel/cadastrar-automovel.component";
+import { ListarAutomovelComponent } from "./components/pages/automovel/listar-automovel/listar-automovel.component";
+import { CadastrarAluguelComponent } from "./components/pages/aluguel/cadastrar-aluguel/cadastrar-aluguel.component";
+import { ListarAluguelComponent } from "./components/pages/aluguel/listar-aluguel/listar-aluguel.component";
+
 
 const routes: Routes = [
   {
@@ -11,6 +16,22 @@ const routes: Routes = [
   {
     path: "pages/cliente/listar",
     component: ListarClientesComponent,
+  },
+  {
+    path: "pages/automovel/cadastrar",
+    component: CadastrarAutomovelComponent,
+  },
+  {
+    path: "pages/automovel/listar",
+    component: ListarAutomovelComponent,
+  },
+  {
+    path: "pages/aluguel/cadastrar",
+    component: CadastrarAluguelComponent,
+  },
+  {
+    path: "pages/aluguel/listar",
+    component: ListarAluguelComponent,
   },
 ];
 

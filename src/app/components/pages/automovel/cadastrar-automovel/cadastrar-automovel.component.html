@@ -1,1 +1,33 @@
-<p>cadastrar-automovel works!</p>
+<h2>Cadastrar Automóvel</h2>
+
+<div id="tipo">
+  <label for="txtNome">Tipo</label>
+  <input type="text" id="txtNome" [(ngModel)]="type" />
+</div>
+<div id="modelos">
+  <label for="txtCpf">Modelos</label>
+  <input type="text" id="txtCpf" [(ngModel)]="models" />
+</div>
+<div id="marca">
+  <label for="txtEmail">Marca</label>
+  <input type="text" id="txtCpf" [(ngModel)]="brand" />
+</div>
+<div id="preço">
+  <label for="txtCpf">Preço diária</label>
+  <input type="text" id="txtCpf" [(ngModel)]="price_per_day" />
+</div>
+<div id="ano">
+    <label for="txtCpf">Ano</label>
+    <input type="text" id="txtCpf" [(ngModel)]="year" />
+  </div>
+  <div id="placa">
+    <label for="txtCpf">Placa</label>
+    <input type="text" id="txtCpf" [(ngModel)]="placa" />
+  </div>
+<div id="botao">
+  <button id="btnCadastrar" (click)="cadastrar()">Cadastrar</button>
+</div>
+<div>
+
+</div>
+

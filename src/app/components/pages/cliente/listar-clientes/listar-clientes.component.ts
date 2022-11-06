@@ -1,26 +1,50 @@
-import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
-import { Cliente } from "src/app/models/cliente";
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { Cliente } from 'src/app/models/cliente';
 
 @Component({
-  selector: "app-listar-clientes",
-  templateUrl: "./listar-clientes.component.html",
-  styleUrls: ["./listar-clientes.component.css"],
+  selector: 'app-listar-cliente',
+  templateUrl: './listar-clientes.component.html',
+  styleUrls: ['./listar-clientes.component.css']
 })
 export class ListarClientesComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  clientes!: Cliente[];
+  id!: number;
+
+  
+  
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     //Configurando a requisição para a API
-    this.http
-      .get<Cliente[]>("https://localhost:5001/api/client/listar")
+    this.http.
+      get<Cliente[]>(
+        "https://localhost:5001/api/client/listar"
+      )
       // Executar a requisição
       .subscribe({
-        next: (clientes) => {
+        next: (cliente) => {
           //Executamos o que for necessário quando a requisição
           //for bem-sucedida
-          console.table(clientes);
-        },
+          this.clientes = cliente;
+        }
       });
   }
+
+  remover(id: number): void {
+      alert(`O id ${id} foi deletado!`);
+    this.http.
+      delete<Cliente>(
+        (`https://localhost:5001/api/client/deletar/${id}`)
+      )
+      .subscribe({
+        next: (cliente) => {
+        
+          this.ngOnInit();
+        },
+       
+      });
+  }
+
 }

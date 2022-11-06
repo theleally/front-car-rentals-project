@@ -10,7 +10,9 @@ import { Cliente } from "src/app/models/cliente";
 export class CadastrarClienteComponent implements OnInit {
   nome!: string;
   cpf!: string;
-  soma!: number;
+  email!: string;
+  cellphone!: string;
+  
 
   constructor(private http: HttpClient) {}
 
@@ -22,8 +24,8 @@ export class CadastrarClienteComponent implements OnInit {
     let cliente: Cliente = {
       name: this.nome,
       cpf: this.cpf,
-      email: "pedrinho@pedrinho.com",
-      cellphone: "(DDD)999999999",
+      email: this.email,
+      cellphone:this.cellphone,
     };
 
     //Configurando a requisição para a API

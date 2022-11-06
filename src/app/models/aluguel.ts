@@ -7,7 +7,8 @@ export interface Aluguel {
   automobileId: number;
   automobile: Automovel;
   total_price: number;
-  total_days: string;
+  total_days: number;
+  price_per_day: number;
   start_date: string;
   end_date: string;
   criadoEm: string;

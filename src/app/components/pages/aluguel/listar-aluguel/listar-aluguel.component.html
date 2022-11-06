@@ -1,1 +1,40 @@
-<p>listar-aluguel works!</p>
+<h1>Listar Aluguéis</h1>
+<table>
+    <tr>
+        <th>#</th>        
+        <th>Cliente</th>
+        <th>Automóvel</th>
+        <th>Cliente</th>
+        <th>Preço Total</th>
+        <th>Total de dias</th>
+        <th>Preço por dia</th>
+        <th>Data de início</th>
+        <th>Data de entrega</th>
+        <th>Criado em</th>
+        <th>Remover</th>
+        <th>Alterar</th>
+        
+    </tr>
+    <tr *ngFor="let pedidos of pedido">
+        <td>{{pedidos.rentalId}}</td>
+        <td>{{pedidos.clientId}}</td>
+        <td>{{pedidos.automobileId}}</td>
+        <td>{{pedidos.total_price}}</td>
+        <td>{{pedidos.total_days}}</td>
+        <td>{{pedidos.price_per_day}}</td>
+        <td>{{pedidos.start_date}}</td>
+        <td>{{pedidos.end_date}}</td>
+        <td>{{pedidos.criadoEm}}</td> 
+        <td>
+            
+            <button (click)="remover(pedidos.rentalId!)">
+                Remover
+            </button>
+        </td>
+        <td>
+            <a routerLink="/pages/rental/cadastrar/{{ pedidos.rentalId }}">
+                Alterar
+            </a>
+        </td>
+    </tr>
+</table>
