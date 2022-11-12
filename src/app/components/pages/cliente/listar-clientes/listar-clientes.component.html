@@ -13,7 +13,7 @@
         
     </tr>
     <tr *ngFor="let cliente of clientes">
-        <td>{{cliente.clienteId}}</td>
+        <td>{{cliente.clientId}}</td>
         <td>{{cliente.name}}</td>
         <td>{{cliente.cpf}}</td>
         <td>{{cliente.email}}</td>
@@ -21,12 +21,12 @@
         <td>{{cliente.criadoEm}}</td> 
         <td>
             
-            <button (click)="remover(cliente.clienteId!)">
+            <button (click)="remover(cliente.clientId!)">
                 Remover
             </button>
         </td>
         <td>
-            <a routerLink="/pages/cliente/cadastrar/{{ cliente.clienteId }}">
+            <a routerLink="/pages/cliente/cadastrar/{{ cliente.clientId }}">
                 Alterar
             </a>
         </td>
