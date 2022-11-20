@@ -39,7 +39,7 @@ export class ListarClientesComponent implements OnInit {
       )
       .subscribe({
         next: (cliente) => {
-          this._snackBar.open("Automóvel deletado!", "Ok!", {
+          this._snackBar.open("Cliente deletado!", "Ok!", {
             horizontalPosition: "center",
             verticalPosition: "top",
           });
