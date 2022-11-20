@@ -7,10 +7,13 @@ import { ListarAutomovelComponent } from "./components/pages/automovel/listar-au
 import { CadastrarAluguelComponent } from "./components/pages/aluguel/cadastrar-aluguel/cadastrar-aluguel.component";
 import { ListarAluguelComponent } from "./components/pages/aluguel/listar-aluguel/listar-aluguel.component";
 
-
 const routes: Routes = [
   {
     path: "pages/cliente/cadastrar",
+    component: CadastrarClienteComponent,
+  },
+  {
+    path: "pages/cliente/cadastrar/:clientId",
     component: CadastrarClienteComponent,
   },
   {
@@ -22,11 +25,19 @@ const routes: Routes = [
     component: CadastrarAutomovelComponent,
   },
   {
+    path: "pages/automovel/cadastrar/:automobileId",
+    component: CadastrarAutomovelComponent,
+  },
+  {
     path: "pages/automovel/listar",
     component: ListarAutomovelComponent,
   },
   {
     path: "pages/aluguel/cadastrar",
+    component: CadastrarAluguelComponent,
+  },
+  {
+    path: "pages/aluguel/cadastrar/:rentalId",
     component: CadastrarAluguelComponent,
   },
   {
