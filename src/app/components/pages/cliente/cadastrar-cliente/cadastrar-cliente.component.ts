@@ -80,7 +80,7 @@ export class CadastrarClienteComponent implements OnInit {
       // Executar a requisição
       .subscribe({
         next: (cliente) => {
-          this._snackBar.open("Automóvel cadastrado!", "Ok!", {
+          this._snackBar.open("Cliente cadastrado!", "Ok!", {
             horizontalPosition: "center",
             verticalPosition: "top",
           });
