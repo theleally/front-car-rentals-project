@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Aluguel } from 'src/app/models/aluguel';
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 
 @Component({
@@ -10,12 +11,8 @@ import { Aluguel } from 'src/app/models/aluguel';
 })
 export class ListarAluguelComponent implements OnInit {
   pedido!: Aluguel[];
-  id!: number;
 
-  
-  
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     //Configurando a requisição para a API
@@ -31,22 +28,26 @@ export class ListarAluguelComponent implements OnInit {
           this.pedido = pedidos;
 
         }
-      });
-  }
-
-  remover(id: number): void {
-      alert(`O pedido de aluguel ${id} foi deletado!`);
-    this.http.
-      delete<Aluguel>(
-        (`https://localhost:5001/api/rental/deletar/${id}`)
-      )
-      .subscribe({
-        next: (pedido) => {
-        
-          this.ngOnInit();
-        },
        
       });
   }
+
+remover(id: number): void {
+     
+  this.http.
+    delete<Aluguel>(
+      (`https://localhost:5001/api/rental/deletar/${id}`)
+    )
+    .subscribe({
+      next: (aluguel) => {
+        this._snackBar.open("Automóvel deletado!", "Ok!", {
+          horizontalPosition: "center",
+          verticalPosition: "top",
+        });
+        this.ngOnInit();
+      },
+     
+    });
+}
 
 }

@@ -1,4 +1,34 @@
-table {
-  width: 100%;
+h1{
+ 
+  color: 111;
   text-align: center;
+}
+table {
+
+    width: 100%;
+    text-align: center;
+    
+}
+
+.button :hover{
+    
+    background-color: red;
+}
+.lines:hover {background-color:#ddd;}
+th, td {
+  
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+.header1{  background-color: #066dc6;
+  color: white;
+font-family:sans-serif;
+}
+.buttonAlt{
+ 
+  text-decoration: none;
+}
+a{
+  text-decoration: none;
+  color: white;
 }

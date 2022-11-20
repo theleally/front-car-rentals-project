@@ -1,33 +1,36 @@
-<h2>Cadastrar Automóvel</h2>
+<mat-card class="container">
+  <mat-card-header>
+    <mat-card-title class="title">Cadastrar Automóvel</mat-card-title>
+  </mat-card-header>
+    <mat-card-content>
+    <mat-form-field class="input" id="type">
+      <mat-label for="tipo">Tipo:</mat-label>
+      <input matInput type="text" name="tipo" [(ngModel)]="type" />
+    </mat-form-field>
+	
+    <mat-form-field class="input" id="models">
+      <mat-label for="models">Modelo:</mat-label>
+      <input matInput type="text" name="models"  [(ngModel)]="models" />
+    </mat-form-field>
+	
+    <mat-form-field class="input" id="brand">
+      <mat-label for="brand">Marca:</mat-label>
+      <input matInput type="text" name="brand" [(ngModel)]="brand" />
+    </mat-form-field>
+	
+	    <mat-form-field class="input" id="year">
+      <mat-label for="year">Ano:</mat-label>
+      <input matInput type="text" name="year" [(ngModel)]="year" />
+    </mat-form-field>
+	
+	    <mat-form-field class="input" id="placa">
+      <mat-label for="placa">Placa:</mat-label>
+      <input matInput type="text" name="placa" [(ngModel)]="placa" />
+    </mat-form-field>
+  </mat-card-content>
 
-<div id="tipo">
-  <label for="txtNome">Tipo</label>
-  <input type="text" id="txtNome" [(ngModel)]="type" />
-</div>
-<div id="modelos">
-  <label for="txtCpf">Modelos</label>
-  <input type="text" id="txtCpf" [(ngModel)]="models" />
-</div>
-<div id="marca">
-  <label for="txtEmail">Marca</label>
-  <input type="text" id="txtCpf" [(ngModel)]="brand" />
-</div>
-<div id="preço">
-  <label for="txtCpf">Preço diária</label>
-  <input type="text" id="txtCpf" [(ngModel)]="price_per_day" />
-</div>
-<div id="ano">
-    <label for="txtCpf">Ano</label>
-    <input type="text" id="txtCpf" [(ngModel)]="year" />
-  </div>
-  <div id="placa">
-    <label for="txtCpf">Placa</label>
-    <input type="text" id="txtCpf" [(ngModel)]="placa" />
-  </div>
-<div id="botao">
-  <button id="btnCadastrar" (click)="cadastrar()">Cadastrar</button>
-</div>
-<div>
+   <button class="alterar" mat-raised-button color="primary" *ngIf="automobileId" id="btnAlterar" (click)="alterar()">Salvar</button>
+ <button mat-raised-button color="warn" *ngIf="!automobileId" id="btnCadastrar" (click)="cadastrar()">Cadastrar</button>
+</mat-card>
 
-</div>
 

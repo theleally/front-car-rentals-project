@@ -1,37 +1,60 @@
-<h2>Cadastrar Pedido</h2>
+<mat-card class="container">
+  <mat-card-header>
+    <mat-card-title class="title">Cadastrar Aluguel</mat-card-title>
+  </mat-card-header>
+    <mat-card-content>
 
-<div id="tipo">
-  <label for="cliente">Cliente</label>
-  <input type="text" id="txtNome" [(ngModel)]="clientId" />
-</div>
-<div id="automovel">
-  <label for="automovel">Automóvel</label>
-  <input type="text" id="txtCpf" [(ngModel)]="automobileId" />
-</div>
+    <mat-form-field class="input" id="clientId">
+      <mat-label for="clientId">Cód. Cliente:</mat-label>
+      <mat-select [(ngModel)]="clientId">
+      <mat-option *ngFor="let clientes of client" value="{{ clientes.clientId }}">
+        {{ clientes.clientId }} - {{ clientes.name }}
+        
+      </mat-option>
+      </mat-select>
+    </mat-form-field>
+		
+    <mat-form-field class="input" id="automobileId">
+      <mat-label for="automobileId">Cód. Automóvel:</mat-label>
+      <mat-select [(ngModel)]="automobileId">
+        <mat-option *ngFor="let automoveis of automobile " value="{{ automoveis.automobileId }}">
+          {{ automoveis.automobileId }} - {{ automoveis.models }}
+          
+        </mat-option>
+        </mat-select>
+      </mat-form-field>
+        
 
-<div id="total">
-  <label for="Dias">Total</label>
-  <input type="text" id="txtCpf" [(ngModel)]="total_price" />
-</div>
-<div id="qtdDias">
-  <label for="txtCpf">Total de dias</label>
-  <input type="text" id="txtCpf" [(ngModel)]="total_days" />
-</div>
-<div id="precoPordia">
-    <label for="txtCpf">Preço diária</label>
-    <input type="text" id="txtCpf" [(ngModel)]="price_per_day" />
-  </div>
-  <div id="dataInicio">
-    <label for="txtCpf">Data início</label>
-    <input type="text" id="txtCpf" [(ngModel)]="start_date" />
-  </div>
-  <div id="dataFim">
-    <label for="txtCpf">Data final</label>
-    <input type="text" id="txtCpf" [(ngModel)]="end_date" />
-  </div>
-<div id="botao">
-  <button id="btnCadastrar" (click)="cadastrar()">Cadastrar</button>
-</div>
-<div>
+    <mat-form-field class="input" id="total_days">
+      <mat-label for="total_days">Total de dias</mat-label>
+      <input matInput type="text" name="total_days" [(ngModel)]="total_Days" />
+    </mat-form-field>
 
-</div>
+    <mat-form-field class="input" id="start_Date">
+      <mat-label for="placa">Data de início:</mat-label>
+      <input matInput type="date" name="start_Date" [(ngModel)]="start_Date" />
+    </mat-form-field>
+
+	 <mat-form-field class="input" id="end_Date">
+      <mat-label for="txtCpf">Dia para Entrega:</mat-label>
+      <input matInput type="date" name="end_date" [(ngModel)]="end_Date" />
+    </mat-form-field>
+
+
+    <mat-form-field class="input" id="Price_per_day">
+      <mat-label for="txtCpf">Preço diária</mat-label>
+      <input matInput type="number" name="Price_per_day" [(ngModel)]="total_Price" />
+    </mat-form-field>
+    
+   
+	
+	   
+    
+  </mat-card-content>
+
+  <button mat-raised-button color="warn" *ngIf="!rentalId" id="btnCadastrar" (click)="cadastrar()">Cadastrar</button>
+  <button class="alterar" mat-raised-button color="primary" *ngIf="rentalId" id="btnAlterar" (click)="alterar()">Salvar</button>
+
+</mat-card>
+
+

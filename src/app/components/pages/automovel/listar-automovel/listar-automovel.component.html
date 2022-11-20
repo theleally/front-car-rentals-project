@@ -1,12 +1,11 @@
-<h1>Listar Clientes</h1>
-
-<table>
-    <tr>
-        <th>#</th>        
+<h1 class="title">Listar Automóveis</h1>
+<div  class="container">
+<table >
+    <tr class="header"> 
+        
         <th>Tipo</th>
         <th>Modelo</th>
         <th>Marca</th>
-        <th>Preço diário</th>
         <th>Ano</th>
         <th>Placa</th>
         <th>Criado em</th>
@@ -14,25 +13,29 @@
         <th>Alterar</th>
         
     </tr>
-    <tr *ngFor="let automoveis of automovel">
-        <td>{{automoveis.automobileId}}</td>
+    <tr class="lines" *ngFor="let automoveis of automovel">
+      
         <td>{{automoveis.type}}</td>
         <td>{{automoveis.models}}</td>
         <td>{{automoveis.brand}}</td>
-        <td>{{automoveis.price_per_day}}</td>
         <td>{{automoveis.year}}</td>
         <td>{{automoveis.placa}}</td>
-        <td>{{automoveis.criadoEm}}</td> 
+        <td>{{automoveis.criadoEm | date: "dd/MM/yyyy"}}</td> 
         <td>
-            
-            <button (click)="remover(automoveis.automobileId!)">
+
+            <button mat-raised-button color="warn"  class="button" (click)="remover(automoveis.automobileId!)">
                 Remover
             </button>
         </td>
         <td>
-            <a routerLink="/pages/automobile/cadastrar/{{ automoveis.automobileId }}">
-                Alterar
-            </a>
+            <button mat-raised-button color="primary" class="buttonAlt2">
+                <a  routerLink="/pages/automovel/cadastrar/{{ automoveis.automobileId }}">
+                    Alterar
+                </a>
+            </button>
+            
         </td>
     </tr>
+
 </table>
+</div>

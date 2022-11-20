@@ -1,40 +1,45 @@
-<h1>Listar Aluguéis</h1>
+<h1 class="title">Listar Aluguéis</h1>
+<div  class="container">
 <table>
-    <tr>
-        <th>#</th>        
-        <th>Cliente</th>
+    <tr class="header"> 
+           
+        <th>Pedido</th>
+        <th>Cód. Cliente</th>
         <th>Automóvel</th>
-        <th>Cliente</th>
-        <th>Preço Total</th>
-        <th>Total de dias</th>
-        <th>Preço por dia</th>
         <th>Data de início</th>
         <th>Data de entrega</th>
+        <th>Total Dias</th>
+        <th>Preço por dia</th>
+        <th>Preço Total</th>
         <th>Criado em</th>
         <th>Remover</th>
         <th>Alterar</th>
         
     </tr>
-    <tr *ngFor="let pedidos of pedido">
-        <td>{{pedidos.rentalId}}</td>
+    <tr class="lines" *ngFor="let pedidos of pedido">
+	    <td>{{pedidos.rentalId}}</td>
         <td>{{pedidos.clientId}}</td>
-        <td>{{pedidos.automobileId}}</td>
-        <td>{{pedidos.total_price}}</td>
-        <td>{{pedidos.total_days}}</td>
-        <td>{{pedidos.price_per_day}}</td>
-        <td>{{pedidos.start_date}}</td>
-        <td>{{pedidos.end_date}}</td>
-        <td>{{pedidos.criadoEm}}</td> 
+        <td>{{pedidos.automobile?.models}}</td>
+        <td>{{pedidos.start_Date | date:'dd/MM/yyyy'}}</td>
+        <td>{{pedidos.end_Date | date: "dd/MM/yyyy"}}</td>
+        <td>{{pedidos.total_Days}}</td>
+        <td>{{pedidos.total_Price| currency: "BRL":"R$ "}}</td>
+        <td>{{pedidos.total_Days_Price| currency: "BRL":"R$ "}}</td>
+        <td>{{pedidos.criadoEm | date: "dd/MM/yyyy"}}</td> 
+        
+
         <td>
-            
-            <button (click)="remover(pedidos.rentalId!)">
+            <button mat-raised-button color="warn"  class="button" (click)="remover(pedidos.rentalId!)">
                 Remover
             </button>
         </td>
         <td>
-            <a routerLink="/pages/rental/cadastrar/{{ pedidos.rentalId }}">
+		<button mat-raised-button color="primary" class="buttonAlt1">
+            <a routerLink="/pages/aluguel/cadastrar/{{ pedidos.rentalId }}">
                 Alterar
             </a>
+			</button>
         </td>
     </tr>
 </table>
+</div>

@@ -1,12 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Automovel } from 'src/app/models/automovel';
+import { MatSnackBar } from "@angular/material/snack-bar";
+
 
 @Component({
   selector: 'app-listar-automovel',
   templateUrl: './listar-automovel.component.html',
   styleUrls: ['./listar-automovel.component.css']
+ 
 })
+  
 export class ListarAutomovelComponent implements OnInit {
   automovel!: Automovel[];
   id!: number;
@@ -14,7 +18,7 @@ export class ListarAutomovelComponent implements OnInit {
   
   
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     //Configurando a requisição para a API
@@ -33,14 +37,17 @@ export class ListarAutomovelComponent implements OnInit {
   }
 
   remover(id: number): void {
-      alert(`O id ${id} foi deletado!`);
+     
     this.http.
       delete<Automovel>(
         (`https://localhost:5001/api/automobile/deletar/${id}`)
       )
       .subscribe({
         next: (automovel) => {
-        
+          this._snackBar.open("Automóvel deletado!", "Ok!", {
+            horizontalPosition: "center",
+            verticalPosition: "top",
+          });
           this.ngOnInit();
         },
        

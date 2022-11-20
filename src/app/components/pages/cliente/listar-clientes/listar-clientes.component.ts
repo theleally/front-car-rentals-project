@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/models/cliente';
-
+import { MatSnackBar } from "@angular/material/snack-bar";
 @Component({
   selector: 'app-listar-cliente',
   templateUrl: './listar-clientes.component.html',
@@ -9,12 +9,12 @@ import { Cliente } from 'src/app/models/cliente';
 })
 export class ListarClientesComponent implements OnInit {
   clientes!: Cliente[];
-  id!: number;
+
 
   
   
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     //Configurando a requisição para a API
@@ -33,14 +33,16 @@ export class ListarClientesComponent implements OnInit {
   }
 
   remover(id: number): void {
-      alert(`O id ${id} foi deletado!`);
-    this.http.
+      this.http.
       delete<Cliente>(
         (`https://localhost:5001/api/client/deletar/${id}`)
       )
       .subscribe({
         next: (cliente) => {
-        
+          this._snackBar.open("Automóvel deletado!", "Ok!", {
+            horizontalPosition: "center",
+            verticalPosition: "top",
+          });
           this.ngOnInit();
         },
        

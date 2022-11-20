@@ -1,6 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Automovel } from 'src/app/models/automovel';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from "@angular/router";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-cadastrar-automovel',
@@ -11,20 +13,65 @@ export class CadastrarAutomovelComponent implements OnInit {
   type!: string;
   models!: string;
   brand!: string;
-  price_per_day!: number;
   year!: string;
   placa!:string;
-  
-  constructor(private http: HttpClient) { }
+  automobileId!: number;
+  mensagem!: string;
+
+  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute, private _snackBar: MatSnackBar)
+  { }
 
   ngOnInit(): void {
+    this.route.params.subscribe({
+      next: (params) => {
+        let { automobileId } = params;
+        if (automobileId !== undefined) {
+          this.http.get<Automovel>(`https://localhost:5001/api/automobile/buscar/${automobileId}`).subscribe({
+            next: (automovel) => {
+              this.automobileId = automobileId;
+              this.placa =automovel.placa;
+              this.type = automovel.type;
+              this.models = automovel.models;
+              this.brand = automovel.brand;
+              this.year = automovel.year;
+
+             
+
+            },
+          });
+        }
+      },
+    });
   }
-  cadastrar(): void {
+
+  alterar(): void {
     let automovel: Automovel = {
+      automobileId: this.automobileId,
       type: this.type,
       models: this.models,
       brand: this.brand,
-      price_per_day: this.price_per_day,
+     
+      year: this.year,
+      placa: this.placa,
+    };
+      this.http.patch<Automovel>("https://localhost:5001/api/automobile/alterar", automovel).subscribe({
+        next: (automovel) => {
+          this._snackBar.open("Automóvel alterado!", "Ok!", {
+            horizontalPosition: "center",
+            verticalPosition: "top",
+          });
+          this.router.navigate(["pages/automovel/listar"]);
+     
+        
+        },
+      });
+    }
+  cadastrar(): void {
+    let automovel: Automovel = {
+      automobileId: this.automobileId,
+      type: this.type,
+      models: this.models,
+      brand: this.brand,
       year: this.year,
       placa: this.placa,
     };
@@ -35,9 +82,22 @@ export class CadastrarAutomovelComponent implements OnInit {
       // Executar a requisição
       .subscribe({
         next: (automovel) => {
+          this._snackBar.open("Automóvel cadastrado!", "Ok!", {
+            horizontalPosition: "center",
+            verticalPosition: "top",
+          });
           //Executamos o que for necessário quando a requisição
           //for bem-sucedida
-          console.log("Gravamos um automóvel", automovel);
+          this.router.navigate(["pages/automovel/listar"]);
+        },
+        error: (error) => {
+          //Executamos o que for necessário quando a requisição
+          //for mal-sucedida
+          if (error.status === 400) {
+            this.mensagem = "Algum erro de validação aconteceu!";
+          } else if (error.status === 0) {
+            this.mensagem = "A sua API não está rodando!";
+          }
         },
       });
   }
