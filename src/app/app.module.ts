@@ -11,10 +11,11 @@ import { CadastrarAutomovelComponent } from './components/pages/automovel/cadast
 import { ListarAutomovelComponent } from './components/pages/automovel/listar-automovel/listar-automovel.component';
 import { CadastrarAluguelComponent } from './components/pages/aluguel/cadastrar-aluguel/cadastrar-aluguel.component';
 import { ListarAluguelComponent } from './components/pages/aluguel/listar-aluguel/listar-aluguel.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, CadastrarClienteComponent, ListarClientesComponent, CadastrarAutomovelComponent, ListarAutomovelComponent, CadastrarAluguelComponent, ListarAluguelComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
