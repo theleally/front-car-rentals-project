@@ -1,14 +1,39 @@
-<a routerLink="/pages/cliente/cadastrar">Cadastrar Cliente</a>
-<br />
-<a routerLink="/pages/cliente/listar">Listar Clientes</a>
-<br />
-<a routerLink="/pages/automovel/cadastrar">Cadastrar Automóvel</a>
-<br />
-<a routerLink="/pages/automovel/listar">Listar Automóveis</a>
-<br />
-<a routerLink="/pages/aluguel/cadastrar">Cadastrar Aluguel</a>
-<br />
-<a routerLink="/pages/aluguel/listar">Listar Aluguéis</a>
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Car Rentals</span>
+</mat-toolbar>
 
-<router-outlet> </router-outlet>
+<mat-sidenav-container class="container">
+  <mat-sidenav #sidenav mode="side">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/pages/cliente/cadastrar">
+        <mat-icon class="icon">add</mat-icon>
+        Cadastrar Cliente</a
+      >
+      <a mat-list-item routerLink="/pages/cliente/listar"
+        ><mat-icon class="icon">list</mat-icon>Listar Clientes</a
+      >
+      <a mat-list-item routerLink="/pages/automovel/cadastrar">
+        <mat-icon class="icon">add</mat-icon>
+        Cadastrar Automóvel</a
+      >
+      <a mat-list-item routerLink="/pages/automovel/listar"
+        ><mat-icon class="icon">list</mat-icon>Listar Automóveis</a
+      >
+      <a mat-list-item routerLink="/pages/aluguel/cadastrar">
+        <mat-icon class="icon">add</mat-icon>
+        Cadastrar Aluguel</a
+      >
+      <a mat-list-item routerLink="/pages/aluguel/listar"
+        ><mat-icon class="icon">list</mat-icon>Listar Aluguéis</a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="content">
+    <router-outlet> </router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
 <!-- É aqui que os componentes vão entrar -->
