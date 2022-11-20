@@ -23,6 +23,9 @@ import { ListarAutomovelComponent } from "./components/pages/automovel/listar-au
 import { CadastrarAluguelComponent } from "./components/pages/aluguel/cadastrar-aluguel/cadastrar-aluguel.component";
 import { ListarAluguelComponent } from "./components/pages/aluguel/listar-aluguel/listar-aluguel.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+
+
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     ListarAutomovelComponent,
     CadastrarAluguelComponent,
     ListarAluguelComponent,
+
+ 
+    
   ],
   imports: [
     BrowserModule,
@@ -51,6 +57,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     MatDatepickerModule,
     MatFormFieldModule,
     MatListModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
