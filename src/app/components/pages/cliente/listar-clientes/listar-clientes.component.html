@@ -1,38 +1,41 @@
 <h1 class="title">Listar Clientes</h1>
-<div  class="container">
-<table >    <tr class="header1">
-        <th>#</th>        
+<div class="container">
+  <table>
+    <tr class="header1">
+      <th>#</th>
 
-        <th>Nome</th>
-        <th>CPF</th>
-        <th>E-mail</th>
-        <th>Telefone</th>
-        <th>Criado em</th>
-        <th>Remover</th>
-        <th>Alterar</th>
-        
+      <th>Nome</th>
+      <th>CPF</th>
+      <th>E-mail</th>
+      <th>Telefone</th>
+      <th>Criado em</th>
+      <th>Remover</th>
+      <th>Alterar</th>
     </tr>
     <tr class="lines" *ngFor="let cliente of clientes">
-        <td>{{cliente.clientId}}</td>
-        <td>{{cliente.name}}</td>
-        <td>{{cliente.cpf}}</td>
-        <td>{{cliente.email}}</td>
-        <td>{{cliente.cellphone}}</td>
-        <td>{{cliente.criadoEm | date: "dd/MM/yyyy"}}</td> 
-        <td>
-            <button mat-raised-button color="warn"  class="button" (click)="remover(cliente.clientId!)">
-                Remover
-            </button>
-        </td>
-        <td>
-            <button mat-raised-button color="primary" class="buttonAlt">
-                <a  routerLink="/pages/cliente/cadastrar/{{ cliente.clientId }}">
-                    Alterar
-                </a>
-            </button>
-            
-        </td>
+      <td>{{ cliente.clientId }}</td>
+      <td>{{ cliente.name }}</td>
+      <td>{{ cliente.cpf }}</td>
+      <td>{{ cliente.email }}</td>
+      <td>{{ cliente.cellphone }}</td>
+      <td>{{ cliente.criadoEm | date: "dd/MM/yyyy" }}</td>
+      <td>
+        <button
+          mat-raised-button
+          color="warn"
+          class="button"
+          (click)="remover(cliente.clientId!)"
+        >
+          Remover
+        </button>
+      </td>
+      <td>
+        <button mat-raised-button color="primary" class="buttonAlt">
+          <a routerLink="/pages/cliente/cadastrar/{{ cliente.clientId }}">
+            Alterar
+          </a>
+        </button>
+      </td>
     </tr>
-
-</table>
+  </table>
 </div>
