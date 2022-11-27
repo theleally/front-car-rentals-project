@@ -24,6 +24,7 @@ import { CadastrarAluguelComponent } from "./components/pages/aluguel/cadastrar-
 import { ListarAluguelComponent } from "./components/pages/aluguel/listar-aluguel/listar-aluguel.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { AlterarAluguelComponent } from './components/pages/aluguel/alterar-aluguel/alterar-aluguel.component';
 
 
 
@@ -36,6 +37,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     ListarAutomovelComponent,
     CadastrarAluguelComponent,
     ListarAluguelComponent,
+    AlterarAluguelComponent,
 
  
     
