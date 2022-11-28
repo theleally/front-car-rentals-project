@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from "@angular/common/http";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
@@ -24,6 +24,7 @@ import { CadastrarAluguelComponent } from "./components/pages/aluguel/cadastrar-
 import { ListarAluguelComponent } from "./components/pages/aluguel/listar-aluguel/listar-aluguel.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { AlterarAluguelComponent } from './components/pages/aluguel/alterar-aluguel/alterar-aluguel.component';
 
 
 
@@ -36,6 +37,11 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     ListarAutomovelComponent,
     CadastrarAluguelComponent,
     ListarAluguelComponent,
+    AlterarAluguelComponent,
+
+    
+  
+
 
  
     
@@ -58,6 +64,14 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     MatFormFieldModule,
     MatListModule,
     MatSnackBarModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    FormsModule,
+    BrowserModule, 
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

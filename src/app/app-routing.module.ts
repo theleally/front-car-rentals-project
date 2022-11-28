@@ -6,6 +6,8 @@ import { CadastrarAutomovelComponent } from "./components/pages/automovel/cadast
 import { ListarAutomovelComponent } from "./components/pages/automovel/listar-automovel/listar-automovel.component";
 import { CadastrarAluguelComponent } from "./components/pages/aluguel/cadastrar-aluguel/cadastrar-aluguel.component";
 import { ListarAluguelComponent } from "./components/pages/aluguel/listar-aluguel/listar-aluguel.component";
+import { AlterarAluguelComponent } from "./components/pages/aluguel/alterar-aluguel/alterar-aluguel.component";
+
 
 const routes: Routes = [
   {
@@ -37,13 +39,18 @@ const routes: Routes = [
     component: CadastrarAluguelComponent,
   },
   {
-    path: "pages/aluguel/cadastrar/:rentalId",
-    component: CadastrarAluguelComponent,
+    path: "pages/aluguel/alterar",
+    component: AlterarAluguelComponent
+  },
+  {
+    path: "pages/aluguel/alterar/:rentalId",
+    component: AlterarAluguelComponent
   },
   {
     path: "pages/aluguel/listar",
     component: ListarAluguelComponent,
   },
+
 ];
 
 @NgModule({

@@ -18,8 +18,8 @@
     </tr>
     <tr class="lines" *ngFor="let pedidos of pedido">
 	    <td>{{pedidos.rentalId}}</td>
-        <td>{{pedidos.clientId}}</td>
-        <td>{{pedidos.automobile?.models}}</td>
+        <td>{{pedidos.clientId}}-{{pedidos.client?.name!}}</td>
+        <td>{{pedidos.automobile?.placa!}}-{{pedidos.automobile?.models}}</td>
         <td>{{pedidos.start_Date | date:'dd/MM/yyyy'}}</td>
         <td>{{pedidos.end_Date | date: "dd/MM/yyyy"}}</td>
         <td>{{pedidos.total_Days}}</td>
@@ -35,7 +35,7 @@
         </td>
         <td>
 		<button mat-raised-button color="primary" class="buttonAlt1">
-            <a routerLink="/pages/aluguel/cadastrar/{{ pedidos.rentalId }}">
+            <a routerLink="/pages/aluguel/alterar/{{ pedidos.rentalId }}">
                 Alterar
             </a>
 			</button>

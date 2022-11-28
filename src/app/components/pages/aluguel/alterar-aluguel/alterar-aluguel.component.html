@@ -1,0 +1,41 @@
+<mat-card class="container">
+    <mat-card class="container">
+        <mat-card-header>
+          <mat-card-title class="title">Alterar Aluguel</mat-card-title>
+        </mat-card-header>
+          <mat-card-content>
+      
+          <mat-form-field class="input" id="clientId">
+            <mat-label for="clientId">Cód. Cliente:</mat-label>
+            <input matInput type="number" [(ngModel)]="clientId">         
+               
+          </mat-form-field>
+              
+          <mat-form-field class="input" id="automobileId">
+            <mat-label for="automobileId">Cód. Automóvel:</mat-label>
+            <input matInput type="number" [(ngModel)]="automobileId">
+       </mat-form-field>
+
+          <mat-form-field class="input" id="total_days">
+            <mat-label for="total_days">Total de dias</mat-label>
+            <input matInput type="number" name="total_days" [(ngModel)]="total_Days" />
+          </mat-form-field>
+      
+          <mat-form-field class="input" id="start_Date">
+            <mat-label for="placa">Data de início:</mat-label>
+            <input matInput type="text" name="start_Date" [(ngModel)]="start_Date" />
+          </mat-form-field>
+      
+           <mat-form-field class="input" id="end_Date">
+            <mat-label for="txtCpf">Dia para Entrega:</mat-label>
+            <input matInput type="text" name="end_date" [(ngModel)]="end_Date" />
+          </mat-form-field>
+      
+      
+          <mat-form-field class="input" id="total_Price">
+            <mat-label for="total_Price">Preço diária</mat-label>
+            <input matInput type="number" name="total_Price" [(ngModel)]="total_Price" />
+          </mat-form-field>
+    </mat-card-content>
+    <button mat-raised-button color="warn" *ngIf="rentalId" id="btnCadastrar" (click)="alterar()">Salvar</button>
+  </mat-card>
