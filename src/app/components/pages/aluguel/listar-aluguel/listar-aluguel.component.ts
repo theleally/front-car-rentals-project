@@ -40,7 +40,7 @@ remover(id: number): void {
     )
     .subscribe({
       next: (aluguel) => {
-        this._snackBar.open("Automóvel deletado!", "Ok!", {
+        this._snackBar.open("Aluguel deletado!", "Ok!", {
           horizontalPosition: "center",
           verticalPosition: "top",
         });
