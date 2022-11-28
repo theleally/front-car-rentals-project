@@ -53,7 +53,7 @@ export class CadastrarAutomovelComponent implements OnInit {
       year: this.year,
       placa: this.placa,
     };
-      this.http.put<Automovel>("https://localhost:5001/api/automobile/alterar", automovel).subscribe({//update using PUT - WB
+      this.http.put<Automovel>(`https://localhost:5001/api/automobile/alterar/${this.automobileId}`, automovel).subscribe({//update using PUT - WB
         next: (automovel) => {
           this._snackBar.open("Automóvel alterado!", "Ok!", {
             horizontalPosition: "center",
