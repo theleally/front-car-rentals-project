@@ -80,7 +80,7 @@ export class CadastrarAluguelComponent implements OnInit {
       criadoEm: this.criadoEm,
       
     };
-    this.http.put<Aluguel>("https://localhost:5001/api/rental/alterar", rental).subscribe({//update using PUT - WB
+    this.http.put<Aluguel>("https://localhost:5001/api/rental/alterar", rental).subscribe({
       next: (rental) => {
         this._snackBar.open("Aluguel Alterado!", "Ok!", {
           horizontalPosition: "center",
