@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/models/cliente';
 import { Automovel} from 'src/app/models/automovel';
 import { ActivatedRoute, Router } from "@angular/router";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 
 @Component({
@@ -25,7 +26,7 @@ export class CadastrarAluguelComponent implements OnInit {
   total_Days_Price!: number;
   total_Price!: number;
   
-  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
+  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.http.get<Cliente[]>("https://localhost:5001/api/client/listar").subscribe({
@@ -81,6 +82,10 @@ export class CadastrarAluguelComponent implements OnInit {
     };
     this.http.put<Aluguel>("https://localhost:5001/api/rental/alterar", rental).subscribe({//update using PUT - WB
       next: (rental) => {
+        this._snackBar.open("Aluguel Alterado!", "Ok!", {
+          horizontalPosition: "center",
+          verticalPosition: "top",
+        });
         this.router.navigate(["pages/aluguel/listar"]);
         this.ngOnInit();
         
@@ -111,7 +116,10 @@ export class CadastrarAluguelComponent implements OnInit {
       // Executar a requisição
       .subscribe({
         next: (aluguel) => {
-
+          this._snackBar.open("Aluguel cadastrado!", "Ok!", {
+            horizontalPosition: "center",
+            verticalPosition: "top",
+          });
           //Executamos o que for necessário quando a requisição
           //for bem-sucedida
 
