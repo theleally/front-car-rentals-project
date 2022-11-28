@@ -1,22 +1,22 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from "@angular/common/http";
 import { Aluguel } from 'src/app/models/aluguel';
-import { Automovel } from 'src/app/models/automovel';
+import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/models/cliente';
+import { Automovel} from 'src/app/models/automovel';
+import { ActivatedRoute, Router } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
-@Component({
-  selector: 'app-alterar-aluguel',
-  templateUrl: './alterar-aluguel.component.html',
-  styleUrls: ['./alterar-aluguel.component.css']
-})
-export class AlterarAluguelComponent implements OnInit {
-  
 
- clientId!: number;
+
+@Component({
+  selector: 'app-cadastrar-aluguel',
+  templateUrl: './cadastrar-aluguel.component.html',
+  styleUrls: ['./cadastrar-aluguel.component.css']
+})
+export class CadastrarAluguelComponent implements OnInit {
+  clientId!: number;
   client!: Cliente[];
   automobileId!: number;
-  automobile!: string;
+  automobile!: Automovel[];
   total_Days!: number;
   start_Date!: string;
   end_Date!: string;
@@ -29,22 +29,33 @@ export class AlterarAluguelComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.http.get<Cliente[]>("https://localhost:5001/api/client/listar").subscribe({
+      next: (clientes) => {
+        this.client = clientes;
+   
+      },
+    });
+    this.http.get<Automovel[]>("https://localhost:5001/api/automobile/listar").subscribe({
+      next: (automoveis) => {
+        this.automobile  = automoveis;
+   
+      },
+    });
 
-      this.route.params.subscribe({
+    this.route.params.subscribe({
       next: (params) => {
         let { rentalId } = params;
         if (rentalId !== undefined) {
           this.http.get<Aluguel>(`https://localhost:5001/api/rental/buscar/${rentalId}`).subscribe({
             next: (aluguel) => {
-              //implements the object to appear - WB
               this.rentalId = rentalId;
-              this.clientId = aluguel?.clientId!;
-              this.automobileId = aluguel?.automobileId!;
-              this.total_Price=aluguel?.total_Price!;
-              this.total_Days=aluguel?.total_Days!;
-              this.total_Days_Price=aluguel?.total_Price!;
-              this.start_Date=aluguel?.start_Date!;
-              this.end_Date=aluguel?.end_Date!;
+              this.clientId = aluguel.clientId;
+              this.automobileId = aluguel.automobileId;
+              this.total_Price;
+              this.total_Days;
+              this.total_Days_Price;
+              this.start_Date;
+              this.end_Date;
               this.criadoEm;
              
             },
@@ -58,26 +69,60 @@ export class AlterarAluguelComponent implements OnInit {
   alterar(): void {
     let rental: Aluguel = {
       clientId: this.clientId,
+
       automobileId: this.automobileId,
+
       total_Price: this.total_Price,
       total_Days: this.total_Days,
       total_Days_Price: this.total_Days_Price,
       start_Date: this.start_Date,
       end_Date: this.end_Date,
       criadoEm: this.criadoEm,
-      rentalId: this.rentalId,
       
     };
-    this.http.put<Aluguel>(`https://localhost:5001/api/rental/alterar/${this.rentalId}`, rental)//update rental using PUT and rentalId to update - WB
-      
-    .subscribe({
-      next: (rental) => {     
-        
-        this._snackBar.open("Aluguel alterado!", "Ok!", {
+    this.http.put<Aluguel>("https://localhost:5001/api/rental/alterar", rental).subscribe({//update using PUT - WB
+      next: (rental) => {
+        this._snackBar.open("Aluguel Alterado!", "Ok!", {
           horizontalPosition: "center",
           verticalPosition: "top",
-        
         });
+        this.router.navigate(["pages/aluguel/listar"]);
+        this.ngOnInit();
+        
+      },
+    });
+  }
+ 
+  cadastrar(): void {
+
+
+    let aluguel: Aluguel = {
+      clientId: this.clientId,
+      automobileId: this.automobileId,
+      total_Price: this.total_Price,
+      total_Days: this.total_Days,
+      end_Date: this.end_Date,
+      criadoEm: this.criadoEm,
+      total_Days_Price: this.total_Days_Price,
+      start_Date: this.start_Date,
+      
+    };
+
+    /*Configurando a requisição para a API*/
+
+	
+    this.http
+      .post<Aluguel>("https://localhost:5001/api/rental/cadastrar", aluguel)
+      // Executar a requisição
+      .subscribe({
+        next: (aluguel) => {
+          this._snackBar.open("Aluguel cadastrado!", "Ok!", {
+            horizontalPosition: "center",
+            verticalPosition: "top",
+          });
+          //Executamos o que for necessário quando a requisição
+          //for bem-sucedida
+
           this.router.navigate(["pages/aluguel/listar"]);
         },
         error: (error) => {
@@ -93,4 +138,5 @@ export class AlterarAluguelComponent implements OnInit {
       });
   }
 }
+
 
