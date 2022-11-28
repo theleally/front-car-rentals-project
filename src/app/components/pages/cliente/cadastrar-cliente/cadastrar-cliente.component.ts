@@ -53,7 +53,7 @@ export class CadastrarClienteComponent implements OnInit {
 	    cpf: this.cpf,
     
     };
-      this.http.put<Cliente>("https://localhost:5001/api/client/alterar", cliente).subscribe({
+      this.http.put<Cliente>(`https://localhost:5001/api/client/alterar/${this.clientId}`, cliente).subscribe({ //update using PUT - WB
         next: (cliente) => {
           this._snackBar.open("Cliente alterado!", "Ok!", {
             horizontalPosition: "center",
