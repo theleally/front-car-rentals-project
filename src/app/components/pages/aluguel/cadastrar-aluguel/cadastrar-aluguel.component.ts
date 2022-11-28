@@ -79,7 +79,7 @@ export class CadastrarAluguelComponent implements OnInit {
       criadoEm: this.criadoEm,
       
     };
-    this.http.patch<Aluguel>("https://localhost:5001/api/rental/alterar", rental).subscribe({
+    this.http.put<Aluguel>("https://localhost:5001/api/rental/alterar", rental).subscribe({//update using PUT - WB
       next: (rental) => {
         this.router.navigate(["pages/aluguel/listar"]);
         this.ngOnInit();

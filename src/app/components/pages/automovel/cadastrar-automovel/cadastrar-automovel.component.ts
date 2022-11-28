@@ -50,17 +50,34 @@ export class CadastrarAutomovelComponent implements OnInit {
       type: this.type,
       models: this.models,
       brand: this.brand,
-     
       year: this.year,
       placa: this.placa,
     };
-      this.http.patch<Automovel>("https://localhost:5001/api/automobile/alterar", automovel).subscribe({
+      this.http.put<Automovel>("https://localhost:5001/api/automobile/alterar", automovel).subscribe({//update using PUT - WB
         next: (automovel) => {
           this._snackBar.open("Automóvel alterado!", "Ok!", {
             horizontalPosition: "center",
             verticalPosition: "top",
           });
+
           this.router.navigate(["pages/automovel/listar"]);
+        },
+          error: (error) => {
+            this._snackBar.open("Automóvel cadastrado!", "Ok!", {
+              horizontalPosition: "center",
+              verticalPosition: "top",
+            });
+            //Executamos o que for necessário quando a requisição
+            //for mal-sucedida
+            if (error.status === 400) {
+              this._snackBar.open("A placa deve conter 8 dígitos!", "Ok!", {
+                horizontalPosition: "center",
+                verticalPosition: "top",
+              
+              });
+            } else if (error.status === 0) {
+              this.mensagem = "A sua API não está rodando!";
+            }
      
         
         },
@@ -86,15 +103,26 @@ export class CadastrarAutomovelComponent implements OnInit {
             horizontalPosition: "center",
             verticalPosition: "top",
           });
+          
+          
+          
           //Executamos o que for necessário quando a requisição
           //for bem-sucedida
           this.router.navigate(["pages/automovel/listar"]);
         },
         error: (error) => {
+          this._snackBar.open("Automóvel cadastrado!", "Ok!", {
+            horizontalPosition: "center",
+            verticalPosition: "top",
+          });
           //Executamos o que for necessário quando a requisição
           //for mal-sucedida
           if (error.status === 400) {
-            this.mensagem = "Algum erro de validação aconteceu!";
+            this._snackBar.open("A placa deve conter 8 dígitos!", "Ok!", {
+              horizontalPosition: "center",
+              verticalPosition: "top",
+            
+            });
           } else if (error.status === 0) {
             this.mensagem = "A sua API não está rodando!";
           }

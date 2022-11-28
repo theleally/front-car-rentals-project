@@ -4,16 +4,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Aluguel } from 'src/app/models/aluguel';
 import { Automovel } from 'src/app/models/automovel';
 import { Cliente } from 'src/app/models/cliente';
-
+import { MatSnackBar } from "@angular/material/snack-bar";
 @Component({
   selector: 'app-alterar-aluguel',
   templateUrl: './alterar-aluguel.component.html',
   styleUrls: ['./alterar-aluguel.component.css']
 })
 export class AlterarAluguelComponent implements OnInit {
+  
 
  clientId!: number;
-  client!: string;
+  client!: Cliente[];
   automobileId!: number;
   automobile!: string;
   total_Days!: number;
@@ -25,7 +26,7 @@ export class AlterarAluguelComponent implements OnInit {
   total_Days_Price!: number;
   total_Price!: number;
   
-  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
+  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
 
@@ -35,14 +36,15 @@ export class AlterarAluguelComponent implements OnInit {
         if (rentalId !== undefined) {
           this.http.get<Aluguel>(`https://localhost:5001/api/rental/buscar/${rentalId}`).subscribe({
             next: (aluguel) => {
+              //implements the object to appear - WB
               this.rentalId = rentalId;
-              this.clientId = aluguel.clientId;
-              this.automobileId = aluguel.automobileId;
-              this.total_Price;
-              this.total_Days;
-              this.total_Days_Price;
-              this.start_Date;
-              this.end_Date;
+              this.clientId = aluguel?.clientId!;
+              this.automobileId = aluguel?.automobileId!;
+              this.total_Price=aluguel?.total_Price!;
+              this.total_Days=aluguel?.total_Days!;
+              this.total_Days_Price=aluguel?.total_Price!;
+              this.start_Date=aluguel?.start_Date!;
+              this.end_Date=aluguel?.end_Date!;
               this.criadoEm;
              
             },
@@ -63,11 +65,19 @@ export class AlterarAluguelComponent implements OnInit {
       start_Date: this.start_Date,
       end_Date: this.end_Date,
       criadoEm: this.criadoEm,
+      rentalId: this.rentalId,
       
     };
-    this.http.patch<Aluguel>("https://localhost:5001/api/rental/alterar", rental).subscribe({
+    this.http.put<Aluguel>(`https://localhost:5001/api/rental/alterar/${this.rentalId}`, rental)//update rental using PUT and rentalId to update - WB
+      
+    .subscribe({
       next: (rental) => {     
- 
+        
+        this._snackBar.open("Aluguel alterado!", "Ok!", {
+          horizontalPosition: "center",
+          verticalPosition: "top",
+        
+        });
           this.router.navigate(["pages/aluguel/listar"]);
         },
         error: (error) => {

@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from "@angular/common/http";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
@@ -39,6 +39,10 @@ import { AlterarAluguelComponent } from './components/pages/aluguel/alterar-alug
     ListarAluguelComponent,
     AlterarAluguelComponent,
 
+    
+  
+
+
  
     
   ],
@@ -60,6 +64,14 @@ import { AlterarAluguelComponent } from './components/pages/aluguel/alterar-alug
     MatFormFieldModule,
     MatListModule,
     MatSnackBarModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    FormsModule,
+    BrowserModule, 
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

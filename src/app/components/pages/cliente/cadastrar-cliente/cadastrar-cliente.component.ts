@@ -53,7 +53,7 @@ export class CadastrarClienteComponent implements OnInit {
 	    cpf: this.cpf,
     
     };
-      this.http.patch<Cliente>("https://localhost:5001/api/client/alterar", cliente).subscribe({
+      this.http.put<Cliente>("https://localhost:5001/api/client/alterar", cliente).subscribe({
         next: (cliente) => {
           this._snackBar.open("Cliente alterado!", "Ok!", {
             horizontalPosition: "center",
@@ -92,7 +92,10 @@ export class CadastrarClienteComponent implements OnInit {
           //Executamos o que for necessário quando a requisição
           //for mal-sucedida
           if (error.status === 400) {
-            this.mensagem = "Algum erro de validação aconteceu!";
+            this._snackBar.open("CPF já cadastrado", "Ok!", {
+              horizontalPosition: "center",
+              verticalPosition: "top",
+            });
           } else if (error.status === 0) {
             this.mensagem = "A sua API não está rodando!";
           }

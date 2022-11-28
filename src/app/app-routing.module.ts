@@ -8,6 +8,7 @@ import { CadastrarAluguelComponent } from "./components/pages/aluguel/cadastrar-
 import { ListarAluguelComponent } from "./components/pages/aluguel/listar-aluguel/listar-aluguel.component";
 import { AlterarAluguelComponent } from "./components/pages/aluguel/alterar-aluguel/alterar-aluguel.component";
 
+
 const routes: Routes = [
   {
     path: "pages/cliente/cadastrar",
@@ -49,6 +50,7 @@ const routes: Routes = [
     path: "pages/aluguel/listar",
     component: ListarAluguelComponent,
   },
+
 ];
 
 @NgModule({
